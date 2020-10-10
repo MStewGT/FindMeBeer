@@ -33,7 +33,7 @@ function App() {
   return (
       <div>
           <h1>Find Me Beer!</h1>
-          Returns a list of breweries in a given city. Replace white space in a city name with and underscore '_'.
+          Returns a list of breweries in a given city. Replace white space in a city name with an underscore '_'.
           <br></br>
           <br></br>
           <form onSubmit={formSubmitted}>
