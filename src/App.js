@@ -1,17 +1,60 @@
 import React from 'react';
-import { BrowserRouter, Route} from "react-router-dom";
-import Home from "./components/Home";
-import Breweries from "./components/Breweries";
-import './App.css';
+import { useState, useEffect, useCallback } from "react";
 
 function App() {
+
+  const [locData, setLocData] = useState('Podunk')
+  const [brewData, setBrewData] = useState([]);
+
+  const onLocChange = useCallback((event) => {
+    console.log(event.target.value);
+    setLocData(event.target.value);
+  }, []);
+
+  const formSubmitted = useCallback((event) => {
+    event.preventDefault();
+    console.log('Form was submitted!');
+    console.log(locData);
+    getBreweries(locData);
+  }, [locData]);
+
+  function getBreweries(location) {
+    fetchBrew();
+    async function fetchBrew() {
+        const res = await fetch(
+            `https://api.openbrewerydb.org/breweries?by_city=${location}`
+        );
+        const data = await res.json();
+        setBrewData(data);
+        console.log(data);
+    }
+  };
+
   return (
-    <BrowserRouter>
       <div>
-        <Route component={Home} path="/" exact />
-        <Route component={Breweries} path="/breweries" />
+          <h1>Find Me Beer!</h1>
+          Returns a list of breweries in a given city. Replace white space in a city name with and underscore '_'.
+          <br></br>
+          <br></br>
+          <form onSubmit={formSubmitted}>
+            <label>Enter a city:</label>
+            <input
+              value={locData}
+              onChange={onLocChange}
+            />
+            <button>GO</button>
+          </form>
+          <ul>
+            {brewData.map((brewery) => (
+              <li key={brewery.id}>
+                <h4>{brewery.name}</h4>
+                City: {brewery.city}
+                <br></br>
+                Website: <a href={brewery.website_url}>{brewery.website_url}</a> 
+              </li>
+            ))}
+          </ul>
       </div>
-    </BrowserRouter>
   );
 }
 

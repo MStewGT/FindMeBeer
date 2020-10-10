@@ -8,3 +8,7 @@ This is built using the create-react-app boilerplate. You can view all the relat
 
 ## Contributing
 This is largely a personal learning project, but feel free to ask to be assigned to any open issue. If you wish to take this in your own direction, I encourage you to fork this repo.
+
+## ToDos
+- [X] Remove fluff and change to SPA
+- [ ] Replace whitespace with '_' for API compatability
