@@ -14,10 +14,15 @@ input, textarea, button, p, div, section, article, select {
   margin: 0.5em;
 }
 
+.list {
+  display: flex;
+  flex-flow: row-reverse wrap;
+}
+
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 40%;
+  width: 80%;
   border-radius: 5px;
 }
 
