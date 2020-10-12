@@ -3,7 +3,7 @@ body {
   padding-top: 1em;
   padding-bottom: 1em;
   font-size: 2em;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 input, textarea, button, p, div, section, article, select {
@@ -16,7 +16,6 @@ input, textarea, button, p, div, section, article, select {
 
 .header {
   background-color: rgb(255, 187, 0);
-  padding: 20px;
   text-align: center;
 }
 
@@ -31,6 +30,7 @@ input, textarea, button, p, div, section, article, select {
   width: 80%;
   border-radius: 5px;
   background-color: rgb(255, 187, 0);
+  padding: 2px 16px;
 }
 
 .card:hover {
