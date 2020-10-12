@@ -14,6 +14,12 @@ input, textarea, button, p, div, section, article, select {
   margin: 0.5em;
 }
 
+.header {
+  background-color: rgb(255, 187, 0);
+  padding: 20px;
+  text-align: center;
+}
+
 .list {
   display: flex;
   flex-flow: row-reverse wrap;
@@ -24,6 +30,7 @@ input, textarea, button, p, div, section, article, select {
   transition: 0.3s;
   width: 80%;
   border-radius: 5px;
+  background-color: rgb(255, 187, 0);
 }
 
 .card:hover {
