@@ -44,16 +44,18 @@ function App() {
             />
             <button>GO</button>
           </form>
-          <ul>
+          {/* <ul> */}
             {brewData.map((brewery) => (
-              <li key={brewery.id}>
+              <div key={brewery.id} class="card">
                 <h4>{brewery.name}</h4>
-                City: {brewery.city}
-                <br></br>
-                Website: <a href={brewery.website_url}>{brewery.website_url}</a> 
-              </li>
+                <div class="container">
+                  City: {brewery.city}
+                  <br></br>
+                  Website: <a href={brewery.website_url}>{brewery.website_url}</a> 
+                </div>
+              </div>
             ))}
-          </ul>
+          {/* </ul> */}
       </div>
   );
 }
