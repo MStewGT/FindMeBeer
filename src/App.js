@@ -45,14 +45,14 @@ function App() {
             <button>GO</button>
           </form>
           {/* <ul> */}
-          <div class="list"></div>
+          <div class="list">
             {brewData.map((brewery) => (
               <div key={brewery.id} class="card">
                 <h4>{brewery.name}</h4>
                 <div class="container">
                   City: {brewery.city}
                   <br></br>
-                  Website: <a href={brewery.website_url}>{brewery.website_url}</a> 
+                  Website: <a href={brewery.website_url}>{brewery.website_url}</a>
                 </div>
               </div>
             ))}
