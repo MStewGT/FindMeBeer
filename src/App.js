@@ -35,7 +35,6 @@ function App() {
   return (
       <div>
         <div class="header">
-          <image src="/public/beer_ico.png"></image>
           <h1>Find Me Beer!</h1>
         </div>
           Returns a list of breweries in a given city. Replace white space in a city name with an underscore '_'.
