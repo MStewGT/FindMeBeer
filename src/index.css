@@ -18,6 +18,7 @@ input, textarea, button, p, div, section, article, select {
 .list {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
 }
 
 .card {
