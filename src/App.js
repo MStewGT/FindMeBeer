@@ -49,7 +49,6 @@ function App() {
             />
             <button>GO</button>
           </form>
-          {/* <ul> */}
           <div class="list">
             {brewData.map((brewery) => (
               <div key={brewery.id} class="card">
@@ -62,7 +61,6 @@ function App() {
               </div>
             ))}
           </div>
-          {/* </ul> */}
       </div>
   );
 }
