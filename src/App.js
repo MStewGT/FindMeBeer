@@ -55,7 +55,9 @@ function App() {
                 <div class="container">
                   City: {brewery.city}
                   <br></br>
-                  Website: <a href={brewery.website_url}>{brewery.website_url}</a>
+                  {brewery.website_url != null
+                    Website: <a href={brewery.website_url}>Website</a>
+                  }
                 </div>
               </div>
             ))}
