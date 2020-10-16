@@ -15,6 +15,6 @@ This is largely a personal learning project, but feel free to ask to be assigned
 ## ToDos
 
 - [X] Remove fluff and change to SPA
-- [ ] Replace whitespace with '_' for API compatibility
+- [X] Replace whitespace with '_' for API compatibility
 - [ ] Fix text spacing within cards
 - [ ] Make input field and button pretty
