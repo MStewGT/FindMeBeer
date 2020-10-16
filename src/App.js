@@ -30,7 +30,7 @@ function App() {
     }
   };
 
-  // if (brewData = null) return { "Sorry we could not find any results for that location." }
+  if (brewData == null) return ( "Sorry we could not find any results for that location." );
 
   return (
       <div>
