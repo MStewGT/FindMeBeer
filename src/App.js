@@ -53,7 +53,9 @@ function App() {
               <div key={brewery.id} class="card">
                 <h4>{brewery.name}</h4>
                 <div class="container">
-                  City: {brewery.city}
+                  {brewery.street}
+                  <br></br>
+                  {brewery.city}, {brewery.state} {brewery.postal_code}
                   <br></br>
                   {brewery.website_url.length > 0 &&
                     <a href={brewery.website_url}>Website</a>
