@@ -19,10 +19,11 @@ function App() {
   }, [locData]);
 
   function getBreweries(location) {
+    const transformedLocation = location.split(' ').join('_')
     fetchBrew();
     async function fetchBrew() {
         const res = await fetch(
-            `https://api.openbrewerydb.org/breweries?by_city=${location}`
+            `https://api.openbrewerydb.org/breweries?by_city=${transformedLocation}`
         );
         const data = await res.json();
         setBrewData(data);
