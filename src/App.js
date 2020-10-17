@@ -35,11 +35,9 @@ function App() {
     }
   };
 
-  if (brewData == null) return ( "Sorry we could not find any results for that location." );
-
   return (
       <div>
-        <div class="header">
+        <div className="header">
           <h1>Find Me Beer!</h1>
         </div>
           Returns a list of breweries in a given city.
@@ -54,11 +52,13 @@ function App() {
             />
             <button>GO</button>
           </form>
-          <div class="list">
-            {brewData.map((brewery) => (
-              <div key={brewery.id} class="card">
+          <div className="list">
+            {brewData.length < 1
+              ? <p>Sorry we could not find any results for that location.</p>
+              : brewData.map((brewery) => (
+              <div key={brewery.id} className="card">
                 <h4>{brewery.name}</h4>
-                <div class="container">
+                <div className="container">
                   {brewery.street}
                   <br></br>
                   {brewery.city}, {brewery.state} {brewery.postal_code}
