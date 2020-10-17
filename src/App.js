@@ -18,6 +18,10 @@ function App() {
     getBreweries(locData);
   }, [locData]);
 
+  const clearOnBrewerySelection = () =>{
+    setLocData("");
+  };
+
   function getBreweries(location) {
     const transformedLocation = location.split(' ').join('_')
     fetchBrew();
@@ -59,7 +63,7 @@ function App() {
                   {brewery.city}, {brewery.state} {brewery.postal_code}
                   <br></br>
                   {brewery.website_url.length > 0 &&
-                    <a href={brewery.website_url}>Website</a>
+                    <a href={brewery.website_url} onClick={clearOnBrewerySelection}>Website</a>
                   }
                 </div>
               </div>
