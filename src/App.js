@@ -18,6 +18,10 @@ function App() {
     getBreweries(locData);
   }, [locData]);
 
+  const clearOnInputClick = () =>{
+    setLocData("");
+  };
+
   function getBreweries(location) {
     const transformedLocation = location.split(' ').join('_')
     fetchBrew();
@@ -46,6 +50,7 @@ function App() {
             <input
               value={locData}
               onChange={onLocChange}
+              onClick={clearOnInputClick}
             />
             <button>GO</button>
           </form>
