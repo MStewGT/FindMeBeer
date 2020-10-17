@@ -18,7 +18,7 @@ function App() {
     getBreweries(locData);
   }, [locData]);
 
-  const clearOnBrewerySelection = () =>{
+  const clearOnInputClick = () =>{
     setLocData("");
   };
 
@@ -50,6 +50,7 @@ function App() {
             <input
               value={locData}
               onChange={onLocChange}
+              onClick={clearOnInputClick}
             />
             <button>GO</button>
           </form>
@@ -63,7 +64,7 @@ function App() {
                   {brewery.city}, {brewery.state} {brewery.postal_code}
                   <br></br>
                   {brewery.website_url.length > 0 &&
-                    <a href={brewery.website_url} onClick={clearOnBrewerySelection}>Website</a>
+                    <a href={brewery.website_url}>Website</a>
                   }
                 </div>
               </div>
