@@ -1,41 +1,151 @@
 body {
-  font-family: sans-serif;
-  font-size: 2em;
-  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Roboto Light", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  padding: 15px;
 }
-input, textarea, button, p, div, section, article, select {
-  display: 'block';
-  font-family: sans-serif;
-  font-size: 1em;
-  margin: 0.5em;
+
+header {
+  margin-bottom: 5px;
+}
+
+header > .about {
+  margin: 10px 0;
+  text-align: center;
+  color: #333;
+  font-size: 14px;
+  display: flex;
+  flex-flow: column;
 }
 
 .header {
   background-color: rgb(255, 187, 0);
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.header > .title {
+  font-size: 28px;
+}
+
+.header > .ico {
+  width: 30px;
+  margin: 0 10px;
+}
+
+.search {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  margin: 0 auto 15px auto;
+  width: 100%;
+}
+
+.search > input {
+  flex: 1;
+  margin-right: 10px;
+  border: 1px solid #666;
+  border-radius: 4px;
+}
+
+.search > button {
+  background-color: rgb(255, 187, 0);
+  border: 1px solid rgb(255, 187, 0);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  flex: 1;
+  max-width: 40px;
+  outline: none;
 }
 
 .list {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.list > .errorMessage {
+  font-size: 14px;
+  background-color: rgba(255, 0, 0, 0.15);
+  padding: 10px;
+  color: black;
+  flex: 1;
 }
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  border-radius: 5px;
+  border-radius: 4px;
   background-color: rgb(255, 187, 0);
-  padding: 2px 16px;
+  padding: 8px;
   text-align: center;
-  min-width: 40%;
+  margin-bottom: 15px;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  flex: 1 1 320px;
 }
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  border-color: rgba(0,0,0, 0.1);
 }
 
-.container {
-  padding: 2px 16px;
+.card > .title {
+  border-bottom: 2px;
+  border-bottom-style: solid;
+  border-color: rgba(255,255,255, 0.35);
+  border-radius: 4px;
+  padding-bottom: 4px;
+  margin-bottom: 12px;
+}
+
+.card > .info {
   font-size: 0.75em;
+  flex: 1;
+}
+
+.card > .link {
+  font-size: 0.75em;
+  transition: 0.3s;
+  color: black;
+  padding: 4px 8px;
+  margin: 16px 0 8px 0;
+  display: inline-block;
+  border-radius: 4px;
+  border: 2px solid rgba(0,0,0, 0.5);
+  border-top: 0;
+  border-bottom: 0;
+  flex-grow: 0;
+  align-self: center;
+  text-decoration: none;
+}
+.card > .link:hover {
+  padding-left: 16px;
+  padding-right: 16px;
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 421px) {
+  .card {
+    max-width: calc(50% - 7px);
+  }
+}
+
+@media screen and (min-width: 841px) {
+  header > .about {
+    text-align: left;
+  }
+
+  .search {
+    margin-left: 0;
+    max-width: 460px;
+  }
+
+  .card {
+    max-width: calc(33% - 7px);
+  }
 }

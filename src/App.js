@@ -1,9 +1,10 @@
 import React from 'react';
 import { useState, useCallback } from "react";
+import { Header } from './Header'
 
 function App() {
 
-  const [locData, setLocData] = useState('Podunk')
+  const [locData, setLocData] = useState('')
   const [brewData, setBrewData] = useState([]);
 
   const onLocChange = useCallback((event) => {
@@ -30,47 +31,43 @@ function App() {
             `https://api.openbrewerydb.org/breweries?by_city=${transformedLocation}`
         );
         const data = await res.json();
-        setBrewData(data);
+        setBrewData(data.length ? data : null);
         console.log(data);
     }
   };
 
   return (
-      <div>
-        <div className="header">
-          <h1>Find Me Beer!</h1>
-        </div>
-          Returns a list of breweries in a given city.
-          <br></br>
-          <br></br>
-          <form onSubmit={formSubmitted}>
-            <label>Enter a city:</label>
+      <>
+        <Header>
+          <form className="search" onSubmit={formSubmitted}>
             <input
+              placeholder="Enter a city"
               value={locData}
               onChange={onLocChange}
               onClick={clearOnInputClick}
             />
             <button>GO</button>
           </form>
-          <div className="list">
-            {brewData.length < 1
-              ? <p>Sorry we could not find any results for that location.</p>
-              : brewData.map((brewery) => (
-              <div key={brewery.id} className="card">
-                <h4>{brewery.name}</h4>
-                <div className="container">
-                  {brewery.street}
-                  <br></br>
-                  {brewery.city}, {brewery.state} {brewery.postal_code}
-                  <br></br>
-                  {brewery.website_url.length > 0 &&
-                    <a href={brewery.website_url}>Website</a>
-                  }
-                </div>
+        </Header>
+        <div className="list">
+          {brewData == null
+            ? <p className="errorMessage">Sorry we could not find any results for that city.</p>
+            : brewData.map((brewery) => (
+            <div key={brewery.id} className="card">
+              <h4 className="title">{brewery.name}</h4>
+              <div className="info">
+                {brewery.street}
+                <br></br>
+                {brewery.city}, {brewery.state} {brewery.postal_code}
+                <br></br>
               </div>
-            ))}
-          </div>
-      </div>
+              {brewery.website_url.length > 0 &&
+                <a href={brewery.website_url} className="link">Website</a>
+              }
+            </div>
+          ))}
+        </div>
+      </>
   );
 }
 
