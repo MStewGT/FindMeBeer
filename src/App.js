@@ -5,7 +5,7 @@ import "rsuite/dist/styles/rsuite-default.css";
 import { Alert } from "rsuite";
 
 function App() {
-  const [locData, setLocData] = useState("Podunk");
+  const [locData, setLocData] = useState("");
   const [brewData, setBrewData] = useState([]);
 
   const onLocChange = useCallback((event) => {
