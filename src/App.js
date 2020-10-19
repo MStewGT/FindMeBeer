@@ -1,7 +1,9 @@
 import React from "react";
 import { useState, useCallback } from "react";
+import { Header } from './Header'
 import "rsuite/dist/styles/rsuite-default.css";
 import { Alert } from "rsuite";
+
 function App() {
   const [locData, setLocData] = useState("Podunk");
   const [brewData, setBrewData] = useState([]);
@@ -42,42 +44,36 @@ function App() {
     }
   }
 
-  // return ( "Sorry we could not find any results for that location." );
-
   return (
-    <div>
-      <div class="header">
-        <h1>Find Me Beer!</h1>
-      </div>
-      Returns a list of breweries in a given city.
-      <br></br>
-      <br></br>
-      <form onSubmit={formSubmitted}>
-        <label>Enter a city:</label>
-        <input
-          value={locData}
-          onChange={onLocChange}
-          onClick={clearOnInputClick}
-        />
-        <button>GO</button>
-      </form>
-      <div class="list">
-        {brewData.map((brewery) => (
-          <div key={brewery.id} class="card">
-            <h4>{brewery.name}</h4>
-            <div class="container">
-              {brewery.street}
-              <br></br>
-              {brewery.city}, {brewery.state} {brewery.postal_code}
-              <br></br>
-              {brewery.website_url.length > 0 && (
-                <a href={brewery.website_url}>Website</a>
-              )}
+      <>
+        <Header>
+          <form className="search" onSubmit={formSubmitted}>
+            <input
+              placeholder="Enter a city"
+              value={locData}
+              onChange={onLocChange}
+              onClick={clearOnInputClick}
+            />
+            <button>GO</button>
+          </form>
+        </Header>
+        <div className="list">
+          {brewData.map((brewery) => (
+            <div key={brewery.id} className="card">
+              <h4 className="title">{brewery.name}</h4>
+              <div className="info">
+                {brewery.street}
+                <br></br>
+                {brewery.city}, {brewery.state} {brewery.postal_code}
+                <br></br>
+              </div>
+              {brewery.website_url.length > 0 &&
+                <a href={brewery.website_url} className="link">Website</a>
+              }
             </div>
-          </div>
-        ))}
-      </div>
-    </div>
+          ))}
+        </div>
+      </>
   );
 }
 
