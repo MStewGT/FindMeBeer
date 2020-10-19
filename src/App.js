@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
 import { useState, useCallback } from "react";
 import { Header } from './Header'
+import "rsuite/dist/styles/rsuite-default.css";
+import { Alert } from "rsuite";
 
 function App() {
-
-  const [locData, setLocData] = useState('')
+  const [locData, setLocData] = useState("Podunk");
   const [brewData, setBrewData] = useState([]);
 
   const onLocChange = useCallback((event) => {
@@ -12,29 +13,36 @@ function App() {
     setLocData(event.target.value);
   }, []);
 
-  const formSubmitted = useCallback((event) => {
-    event.preventDefault();
-    console.log('Form was submitted!');
-    console.log(locData);
-    getBreweries(locData);
-  }, [locData]);
+  const formSubmitted = useCallback(
+    (event) => {
+      event.preventDefault();
+      console.log("Form was submitted!");
+      console.log(locData);
+      getBreweries(locData);
+    },
+    [locData]
+  );
 
-  const clearOnInputClick = () =>{
+  const clearOnInputClick = () => {
     setLocData("");
   };
 
   function getBreweries(location) {
-    const transformedLocation = location.split(' ').join('_')
+    const transformedLocation = location.split(" ").join("_");
     fetchBrew();
     async function fetchBrew() {
-        const res = await fetch(
-            `https://api.openbrewerydb.org/breweries?by_city=${transformedLocation}`
-        );
-        const data = await res.json();
-        setBrewData(data.length ? data : null);
-        console.log(data);
+      const res = await fetch(
+        `https://api.openbrewerydb.org/breweries?by_city=${transformedLocation}`
+      );
+      const data = await res.json();
+      setBrewData(data);
+      console.log(data);
+
+      if (data.length === 0) {
+        Alert.error("Sorry, no result for your location.", 5000);
+      }
     }
-  };
+  }
 
   return (
       <>
@@ -50,9 +58,7 @@ function App() {
           </form>
         </Header>
         <div className="list">
-          {brewData == null
-            ? <p className="errorMessage">Sorry we could not find any results for that city.</p>
-            : brewData.map((brewery) => (
+          {brewData.map((brewery) => (
             <div key={brewery.id} className="card">
               <h4 className="title">{brewery.name}</h4>
               <div className="info">
