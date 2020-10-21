@@ -19,4 +19,4 @@ This is largely a personal learning project, but feel free to ask to be assigned
 - [X] Remove fluff and change to SPA
 - [X] Replace whitespace with '_' for API compatibility
 - [ ] Fix text spacing within cards
-- [ ] Make input field and button pretty
+- [X] Make input field and button pretty
