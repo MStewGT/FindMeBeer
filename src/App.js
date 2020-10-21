@@ -49,12 +49,14 @@ function App() {
         <Header>
           <form className="search" onSubmit={formSubmitted}>
             <input
-              placeholder="Enter a city"
+              type="search"
+              className="formInput"
+              placeholder="Search by City Name"
               value={locData}
               onChange={onLocChange}
               onClick={clearOnInputClick}
             />
-            <button>GO</button>
+            <button className="btn primary inside">GO</button>
           </form>
         </Header>
         <div className="list">
