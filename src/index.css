@@ -186,12 +186,7 @@ button:focus {
 
 @media screen and (min-width: 841px) {
   header > .about {
-    text-align: left;
-  }
-
-  .search {
-    margin-left: 0;
-    max-width: 460px;
+    text-align: center;
   }
 
   .card {
