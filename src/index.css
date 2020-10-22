@@ -110,9 +110,10 @@ button:focus {
 }
 
 .list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding-top: 10px;
 }
 
 .list > .errorMessage {
@@ -132,10 +133,6 @@ button:focus {
   text-align: center;
   margin-bottom: 15px;
   border: 2px solid transparent;
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
-  flex: 1 1 320px;
 }
 
 .card:hover {
@@ -154,7 +151,6 @@ button:focus {
 
 .card > .info {
   font-size: 0.75em;
-  flex: 1;
 }
 
 .card > .link {
@@ -168,7 +164,6 @@ button:focus {
   border: 2px solid rgba(0,0,0, 0.5);
   border-top: 0;
   border-bottom: 0;
-  flex-grow: 0;
   align-self: center;
   text-decoration: none;
 }
@@ -178,18 +173,10 @@ button:focus {
   text-decoration: underline;
 }
 
-@media screen and (min-width: 421px) {
-  .card {
-    max-width: calc(50% - 7px);
-  }
+@media screen and (max-width: 320px) {
+  .list {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
-
-@media screen and (min-width: 841px) {
-  header > .about {
-    text-align: center;
-  }
-
-  .card {
-    max-width: calc(33% - 7px);
-  }
 }
