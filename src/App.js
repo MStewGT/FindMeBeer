@@ -36,6 +36,7 @@ function App() {
       );
       const data = await res.json();
 
+      //Sorting function
       data.sort((a, b) => {
         var nameA = a.name.toLowerCase(),
           nameB = b.name.toLowerCase();
