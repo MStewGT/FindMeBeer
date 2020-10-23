@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useCallback } from "react";
-import { Header } from './Header'
+import { Header } from "./Header";
 import "rsuite/dist/styles/rsuite-default.css";
 import { Alert } from "rsuite";
 
@@ -35,6 +35,20 @@ function App() {
         `https://api.openbrewerydb.org/breweries?by_city=${transformedLocation}`
       );
       const data = await res.json();
+
+      //Sorting function
+      data.sort((a, b) => {
+        var nameA = a.name.toLowerCase(),
+          nameB = b.name.toLowerCase();
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      });
+
       setBrewData(data);
       console.log(data);
 
@@ -45,37 +59,39 @@ function App() {
   }
 
   return (
-      <>
-        <Header>
-          <form className="search" onSubmit={formSubmitted}>
-            <input
-              type="search"
-              className="formInput"
-              placeholder="Search by City Name"
-              value={locData}
-              onChange={onLocChange}
-              onClick={clearOnInputClick}
-            />
-            <button className="btn primary inside">GO</button>
-          </form>
-        </Header>
-        <div className="list">
-          {brewData.map((brewery) => (
-            <div key={brewery.id} className="card">
-              <h4 className="title">{brewery.name}</h4>
-              <div className="info">
-                {brewery.street}
-                <br></br>
-                {brewery.city}, {brewery.state} {brewery.postal_code}
-                <br></br>
-              </div>
-              {brewery.website_url.length > 0 &&
-                <a href={brewery.website_url} className="link">Website</a>
-              }
+    <>
+      <Header>
+        <form className="search" onSubmit={formSubmitted}>
+          <input
+            type="search"
+            className="formInput"
+            placeholder="Search by City Name"
+            value={locData}
+            onChange={onLocChange}
+            onClick={clearOnInputClick}
+          />
+          <button className="btn primary inside">GO</button>
+        </form>
+      </Header>
+      <div className="list">
+        {brewData.map((brewery) => (
+          <div key={brewery.id} className="card">
+            <h4 className="title">{brewery.name}</h4>
+            <div className="info">
+              {brewery.street}
+              <br></br>
+              {brewery.city}, {brewery.state} {brewery.postal_code}
+              <br></br>
             </div>
-          ))}
-        </div>
-      </>
+            {brewery.website_url.length > 0 && (
+              <a href={brewery.website_url} className="link">
+                Website
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 
