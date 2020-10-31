@@ -4,6 +4,15 @@ import { Header } from "./Header";
 import "rsuite/dist/styles/rsuite-default.css";
 import { Alert } from "rsuite";
 
+function formatPhoneNumber(phoneNumberString) {
+  var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
+  var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/)
+  if (match) {
+    return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+  }
+  return null
+}
+
 function App() {
   const [locData, setLocData] = useState("");
   const [brewData, setBrewData] = useState([]);
@@ -81,6 +90,9 @@ function App() {
               {brewery.street}
               <br></br>
               {brewery.city}, {brewery.state} {brewery.postal_code}
+              <br></br>
+              {formatPhoneNumber(brewery.phone)}
+              <br></br>
               <br></br>
             </div>
             {brewery.website_url.length > 0 && (
