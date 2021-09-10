@@ -95,7 +95,7 @@ function App() {
               <br></br>
               <br></br>
             </div>
-            {brewery.website_url.length > 0 && (
+            {brewery.website_url != null && (
               <a href={brewery.website_url} className="link">
                 Website
               </a>
