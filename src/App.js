@@ -66,6 +66,23 @@ function App() {
       }
     }
   }
+  function getbreweryTypeClass(brewery) {
+    switch (brewery.brewery_type) {
+      case 'closed':
+        return "p-close";
+      default:
+        return "";
+    }
+  }
+
+  function getbreweryTypeText(brewery) {
+    switch (brewery.brewery_type) {
+      case 'closed':
+        return <span className="p-close-text">Permanently Closed</span>;
+      default:
+        return "";
+    }
+  }
 
   return (
     <>
@@ -84,7 +101,8 @@ function App() {
       </Header>
       <div className="list">
         {brewData.map((brewery) => (
-          <div key={brewery.id} className="card">
+          <div key={brewery.id} className={`card ${getbreweryTypeClass(brewery)}`} >
+            {getbreweryTypeText(brewery) && getbreweryTypeText(brewery)}
             <h4 className="title">{brewery.name}</h4>
             <div className="info">
               {brewery.street}
