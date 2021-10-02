@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Header } from "./Header";
 import "rsuite/dist/styles/rsuite-default.css";
 import { Alert } from "rsuite";
@@ -16,6 +16,10 @@ function formatPhoneNumber(phoneNumberString) {
 function App() {
   const [locData, setLocData] = useState("");
   const [brewData, setBrewData] = useState([]);
+
+  useEffect(() => {
+    getBreweries("")
+  }, [])
 
   const onLocChange = useCallback((event) => {
     console.log(event.target.value);
@@ -84,7 +88,7 @@ function App() {
       </Header>
       <div className="list">
         {brewData.map((brewery) => (
-          <div key={brewery.id} className="card">
+          <div key={brewery.id} className="card align-items-center">
             <h4 className="title">{brewery.name}</h4>
             <div className="info">
               {brewery.street}
@@ -96,7 +100,7 @@ function App() {
               <br></br>
             </div>
             {brewery.website_url != null && (
-              <a href={brewery.website_url} className="link">
+              <a href={brewery.website_url} className="button">
                 Website
               </a>
             )}

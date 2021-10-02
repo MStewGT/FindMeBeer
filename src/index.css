@@ -185,3 +185,27 @@ button:focus {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 }
+
+
+.button {
+    display: block;
+    background: #CC8D08;;
+    padding: 10px 22px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    color: white;
+    transition: 0.7s background-color;
+}
+
+.button:hover{
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  background-color: #FFCA59;
+}
+
+.align-items-center{
+  display: flex;
+  align-items: center;
+}
