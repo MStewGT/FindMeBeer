@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Header } from "./Header";
 import "rsuite/dist/styles/rsuite-default.css";
 import { Alert } from "rsuite";
@@ -16,6 +16,10 @@ function formatPhoneNumber(phoneNumberString) {
 function App() {
   const [locData, setLocData] = useState("");
   const [brewData, setBrewData] = useState([]);
+
+  useEffect(() => {
+    getBreweries("")
+  }, [])
 
   const onLocChange = useCallback((event) => {
     console.log(event.target.value);
@@ -66,6 +70,23 @@ function App() {
       }
     }
   }
+  function getbreweryTypeClass(brewery) {
+    switch (brewery.brewery_type) {
+      case 'closed':
+        return "p-close";
+      default:
+        return "";
+    }
+  }
+
+  function getbreweryTypeText(brewery) {
+    switch (brewery.brewery_type) {
+      case 'closed':
+        return <span className="p-close-text">Permanently Closed</span>;
+      default:
+        return "";
+    }
+  }
 
   return (
     <>
@@ -84,7 +105,8 @@ function App() {
       </Header>
       <div className="list">
         {brewData.map((brewery) => (
-          <div key={brewery.id} className="card">
+          <div key={brewery.id} className={`card ${getbreweryTypeClass(brewery)}  align-items-center`} >
+            {getbreweryTypeText(brewery) && getbreweryTypeText(brewery)}
             <h4 className="title">{brewery.name}</h4>
             <div className="info">
               {brewery.street}
@@ -95,8 +117,8 @@ function App() {
               <br></br>
               <br></br>
             </div>
-            {brewery.website_url.length > 0 && (
-              <a href={brewery.website_url} className="link">
+            {brewery.website_url != null && (
+              <a href={brewery.website_url} className="button">
                 Website
               </a>
             )}
