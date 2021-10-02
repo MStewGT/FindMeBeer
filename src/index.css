@@ -141,6 +141,20 @@ button:focus {
   text-align: center;
   margin-bottom: 15px;
   border: 2px solid transparent;
+  position: relative;
+}
+.card.p-close{
+  background-color: #ff000066;
+}
+.p-close-text{
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+  background-color:#ff0000b5;
+  color: white;
+  border-radius: 5%;
+  padding: 2px;
+  box-shadow: rgb(50 50 93 / 25%) 0px 30px 60px -12px inset, rgb(0 0 0 / 30%) 0px 18px 36px -18px inset;
 }
 
 .card:hover {

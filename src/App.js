@@ -70,6 +70,23 @@ function App() {
       }
     }
   }
+  function getbreweryTypeClass(brewery) {
+    switch (brewery.brewery_type) {
+      case 'closed':
+        return "p-close";
+      default:
+        return "";
+    }
+  }
+
+  function getbreweryTypeText(brewery) {
+    switch (brewery.brewery_type) {
+      case 'closed':
+        return <span className="p-close-text">Permanently Closed</span>;
+      default:
+        return "";
+    }
+  }
 
   return (
     <>
