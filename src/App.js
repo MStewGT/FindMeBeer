@@ -105,7 +105,8 @@ function App() {
       </Header>
       <div className="list">
         {brewData.map((brewery) => (
-          <div key={brewery.id} className="card align-items-center">
+          <div key={brewery.id} className={`card ${getbreweryTypeClass(brewery)}  align-items-center`} >
+            {getbreweryTypeText(brewery) && getbreweryTypeText(brewery)}
             <h4 className="title">{brewery.name}</h4>
             <div className="info">
               {brewery.street}
