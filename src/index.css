@@ -127,7 +127,7 @@ button:focus {
 .list {
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   padding-top: 10px;
 }
 
@@ -325,11 +325,7 @@ input:checked + .slider:before {
   align-items: center;
 }
 @media only screen and (max-width: 480px) {
-  .list {
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
+ 
   .inputBtn {
     display: block;
   }
