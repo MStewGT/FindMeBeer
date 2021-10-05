@@ -157,7 +157,10 @@ function App() {
                 <a
                   href={brewery.website_url}
                   className="button"
-                  style={{ backgroundColor: darkMode ? "#333" : "#cc8d08" }}
+                  style={{
+                    backgroundColor: darkMode ? "#cc8d08" : "#cc8d08",
+                    color: darkMode ? "white" : "black"
+                  }}
                 >
                   Website
                 </a>
