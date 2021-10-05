@@ -7,7 +7,7 @@ export const Header = (props) => {
   return (
     <header>
       <div className="header">
-        <h1 className="title">Find Me Beer!</h1><img className="ico" src={icoBeer} alt="Brewery" />
+      <img className="ico" src={icoBeer} alt="Brewery" /><h1 className="title">Find Me Beer!</h1><img className="ico" src={icoBeer} alt="Brewery" />
         <a className="github-logo-ico" href="https://github.com/MStewGT/FindMeBeer">
           <img src={githubLogo} alt="GitHub"></img>
         </a>
