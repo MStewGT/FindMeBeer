@@ -5,12 +5,12 @@ import "rsuite/dist/styles/rsuite-default.css";
 import { Alert } from "rsuite";
 
 function formatPhoneNumber(phoneNumberString) {
-  var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
-  var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/)
+  var cleaned = ("" + phoneNumberString).replace(/\D/g, "");
+  var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
   if (match) {
-    return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+    return "(" + match[1] + ") " + match[2] + "-" + match[3];
   }
-  return null
+  return null;
 }
 
 function App() {
@@ -18,8 +18,8 @@ function App() {
   const [brewData, setBrewData] = useState([]);
 
   useEffect(() => {
-    getBreweries("")
-  }, [])
+    getBreweries("");
+  }, []);
 
   const onLocChange = useCallback((event) => {
     console.log(event.target.value);
@@ -72,7 +72,7 @@ function App() {
   }
   function getbreweryTypeClass(brewery) {
     switch (brewery.brewery_type) {
-      case 'closed':
+      case "closed":
         return "p-close";
       default:
         return "";
@@ -81,51 +81,95 @@ function App() {
 
   function getbreweryTypeText(brewery) {
     switch (brewery.brewery_type) {
-      case 'closed':
+      case "closed":
         return <span className="p-close-text">Permanently Closed</span>;
       default:
         return "";
     }
   }
 
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
-    <>
+    <div className={darkMode ? "main dark-mode" : "main light-mode"}>
       <Header>
-        <form className="search" onSubmit={formSubmitted}>
-          <input
-            type="search"
-            className="formInput"
-            placeholder="Search by City Name"
-            value={locData}
-            onChange={onLocChange}
-            onClick={clearOnInputClick}
-          />
-          <button className="btn primary inside">GO</button>
-        </form>
-      </Header>
-      <div className="list">
-        {brewData.map((brewery) => (
-          <div key={brewery.id} className={`card ${getbreweryTypeClass(brewery)}  align-items-center`} >
-            {getbreweryTypeText(brewery) && getbreweryTypeText(brewery)}
-            <h4 className="title">{brewery.name}</h4>
-            <div className="info">
-              {brewery.street}
-              <br></br>
-              {brewery.city}, {brewery.state} {brewery.postal_code}
-              <br></br>
-              {formatPhoneNumber(brewery.phone)}
-              <br></br>
-              <br></br>
-            </div>
-            {brewery.website_url != null && (
-              <a href={brewery.website_url} className="button">
-                Website
-              </a>
-            )}
+        <div class="inputBtn">
+          <div className="left"></div>
+          <div className="center">
+            <form className="search" onSubmit={formSubmitted}>
+              <input
+                type="search"
+                className="formInput"
+                placeholder="Search by City Name"
+                value={locData}
+                onChange={onLocChange}
+                onClick={clearOnInputClick}
+              />
+              <button className="btn primary inside">GO</button>
+            </form>
           </div>
-        ))}
+          <div className="right">
+            <div className="container">
+              <span style={{ color: darkMode ? "grey" : "yellow" }}>☀︎</span>
+              <div className="switch-checkbox">
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    onChange={() => setDarkMode(!darkMode)}
+                  />
+                  <span className="slider round"> </span>
+                </label>
+              </div>
+              <span style={{ color: darkMode ? "#c96dfd" : "grey" }}>☽</span>
+            </div>
+          </div>
+        </div>
+      </Header>
+      <div className="content">
+        <div className="list">
+          {brewData.map((brewery) => (
+            <div
+              key={brewery.id}
+              className={`card ${getbreweryTypeClass(
+                brewery
+              )}  align-items-center`}
+            >
+              {getbreweryTypeText(brewery) && getbreweryTypeText(brewery)}
+              <h4
+                className="title"
+                style={{ color: darkMode ? "white" : "black" }}
+              >
+                {brewery.name}
+              </h4>
+              <div
+                className="info"
+                style={{ color: darkMode ? "white" : "#333" }}
+              >
+                {brewery.street}
+                <br></br>
+                {brewery.city}, {brewery.state} {brewery.postal_code}
+                <br></br>
+                {formatPhoneNumber(brewery.phone)}
+                <br></br>
+                <br></br>
+              </div>
+              {brewery.website_url != null && (
+                <a
+                  href={brewery.website_url}
+                  className="button"
+                  style={{
+                    backgroundColor: darkMode ? "#cc8d08" : "#cc8d08",
+                    color: darkMode ? "white" : "black"
+                  }}
+                >
+                  Website
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 
