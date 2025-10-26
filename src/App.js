@@ -45,7 +45,7 @@ function App() {
     fetchBrew();
     async function fetchBrew() {
       const res = await fetch(
-        `https://api.openbrewerydb.org/breweries?by_city=${transformedLocation}`
+        `https://api.openbrewerydb.org/v1/breweries?by_city=${transformedLocation}`
       );
       const data = await res.json();
 
